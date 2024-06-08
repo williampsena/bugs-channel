@@ -33,12 +33,21 @@ go install golang.org/x/vuln/cmd/govulncheck@latest
 
 ## TODO
 
+- Create a project diagram
 - Scrub events to avoid exposing sensitive information
 - Get consumers (sub) and producers (pub) on board with NATS
-- Generate documentation with pkgsite
+- Generate and improve documentation with pkgsite
 - Grpc support
 - Support Graylog as a error target
 - Support Kibana as a error target
+- Adds MongoDB as an alternative for event persistence
+- Support BugsChannel HTTP routes
+- Adds Rabbit as a channel alternative
+- Create a Helm Chart for Kubernetes deployments
+- Handle Honeybadger events from their SDKs
+- Handle Rollbar events from their SDKs
+- Support OpenTelemetry
+- Dispatch project metrics
 
 # Running project
 
