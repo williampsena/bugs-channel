@@ -1,0 +1,23 @@
+---
+version: "1"
+
+org: foo
+
+services:
+  - id: "1"
+    name: foo bar service
+    platform: python
+    teams:
+      - id: "1"
+        name: foo
+    settings:
+      rate_limit: 1
+    auth_keys:
+      - key: key
+      - key: expired_key
+        expired_at: 946684800
+      - key: disabled_key
+        disabled: true
+teams:
+  - id: "1"
+    name: foo

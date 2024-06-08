@@ -1,0 +1,38 @@
+version: '3.8'
+
+networks:
+  nats:
+    name: nats
+  mongo:
+    name: mongo
+  redis:
+    name: redis
+
+services:
+  nats:
+    image: bitnami/nats:latest
+    ports:
+      - 4222:4222
+      - 6222:6222
+      - 8222:8222
+    networks:
+      - nats
+
+  mongo:
+    image: mongo:6
+    ports:
+      - 27017:27017
+    networks:
+      - mongo
+    volumes:
+      - .docker/mongo:/data/db
+
+
+  redis:
+    image: bitnami/redis:7.0
+    ports:
+      - 6379:6379
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - redis
