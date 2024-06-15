@@ -55,3 +55,7 @@ func TestEventChannel(t *testing.T) {
 	t.Setenv("EVENT_CHANNEL", "nats_or_redis")
 	require.Equal(t, EventChannel(), "nats_or_redis")
 }
+func TestScrubSensitiveKeys(t *testing.T) {
+	t.Setenv("SCRUB_SENSITIVE_KEYS", "foo,bar")
+	require.Equal(t, ScrubSensitiveKeys(), []string{"foo", "bar"})
+}

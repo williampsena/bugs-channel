@@ -5,6 +5,7 @@ import (
 	"errors"
 	"os"
 	"strconv"
+	"strings"
 )
 
 // This occurs when an invalid server port number is provided.
@@ -72,6 +73,11 @@ func RedisConnectionUrl() string {
 // The event channel (redis/nats)
 func EventChannel() string {
 	return os.Getenv("EVENT_CHANNEL")
+}
+
+// The sensitive keys to hide from events
+func ScrubSensitiveKeys() []string {
+	return strings.Split(getEnv("SCRUB_SENSITIVE_KEYS", ""), ",")
 }
 
 func getEnv(key, defaultValue string) string {

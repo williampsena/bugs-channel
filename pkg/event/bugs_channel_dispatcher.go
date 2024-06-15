@@ -3,9 +3,12 @@ package event
 
 import (
 	"context"
+	"fmt"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/williampsena/bugs-channel-plugins/pkg/event"
+	"github.com/williampsena/bugs-channel/pkg/config"
+	"github.com/williampsena/bugs-channel/pkg/scrub"
 	"github.com/williampsena/bugs-channel/pkg/storage"
 )
 
@@ -16,6 +19,9 @@ type BugsChannelEventsDispatcher struct {
 
 // Dispatch a event
 func (d *BugsChannelEventsDispatcher) Dispatch(event event.Event) error {
+	scrub.ScrubSensitiveEvent(&event, config.ScrubSensitiveKeys())
+
+	fmt.Println(event.Tags)
 	body, err := event.Json()
 
 	if err != nil {
